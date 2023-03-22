@@ -8,8 +8,12 @@ namespace Farmacie
 {
     public class AddMedicament
     {
-        string denumire;
-        string prospect;
+        private const char SEPARATOR_PRINCIPAL_FISIER = ';';
+        private string denumire;
+        private string prospect;
+
+        private const int DENUMIRE = 1;
+        private const int PROSPECT = 2;
 
 
         //	Constructor fara parametri
@@ -26,11 +30,30 @@ namespace Farmacie
             prospect = _prospect;
         }
 
+        public AddMedicament(string linieFisier)
+        {
+            var dateFisier = linieFisier.Split(SEPARATOR_PRINCIPAL_FISIER);
+
+            //ordinea de preluare a campurilor este data de ordinea in care au fost scrise in fisier prin apelul implicit al metodei ConversieLaSir_PentruFisier()
+            denumire = dateFisier[DENUMIRE];
+            prospect = dateFisier[PROSPECT];
+        }
+
         //	Metoda care returneaza informatiile despre figura geometrica 
         //	sub forma unui sir de caractere
         public string Info()
         {
             return $"Denumire: {denumire}, Prospect: {prospect}";
+        }
+
+        public string ConversieLaSir_PentruFisier()
+        {
+            string obiectMedicamentPentruFisier = string.Format("{1}{0}{2}{0}{3}{0}",
+                SEPARATOR_PRINCIPAL_FISIER,
+                (denumire ?? " NECUNOSCUT "),
+                (prospect ?? " NECUNOSCUT "));
+
+            return obiectMedicamentPentruFisier;
         }
     }
 }
