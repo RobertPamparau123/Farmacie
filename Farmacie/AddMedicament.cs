@@ -8,21 +8,16 @@ namespace Farmacie
 {
     public class AddMedicament
     {
-<<<<<<< HEAD
         string denumire;
         string prospect;
         string tip;
         float pret;
 
-=======
-        private const char SEPARATOR_PRINCIPAL_FISIER = ';';
-        private string denumire;
-        private string prospect;
-
         private const int DENUMIRE = 1;
         private const int PROSPECT = 2;
->>>>>>> 8c236bedb45a23bae6f58b9f89e72028bbd053d3
-
+        private const int TIP = 3;
+        private const int PRET = 4;
+        private const char SEPARATOR_PRINCIPAL_FISIER = ';';
 
         //	Constructor fara parametri
         public AddMedicament()
@@ -43,15 +38,11 @@ namespace Farmacie
             pret = _pret;
         }
 
-<<<<<<< HEAD
-        public string getDenumire() 
+        public string getDenumire()
         {
             return denumire;
         }
 
-
-
-=======
         public AddMedicament(string linieFisier)
         {
             var dateFisier = linieFisier.Split(SEPARATOR_PRINCIPAL_FISIER);
@@ -59,9 +50,10 @@ namespace Farmacie
             //ordinea de preluare a campurilor este data de ordinea in care au fost scrise in fisier prin apelul implicit al metodei ConversieLaSir_PentruFisier()
             denumire = dateFisier[DENUMIRE];
             prospect = dateFisier[PROSPECT];
+            tip = dateFisier[TIP];
+            pret = float.Parse(dateFisier[PRET]);
         }
 
->>>>>>> 8c236bedb45a23bae6f58b9f89e72028bbd053d3
         //	Metoda care returneaza informatiile despre figura geometrica 
         //	sub forma unui sir de caractere
         public string Info()
@@ -69,18 +61,16 @@ namespace Farmacie
             return $"Denumire: {denumire}, Prospect: {prospect}, Tip:{tip},Pret:{pret}";
         }
 
-<<<<<<< HEAD
-        
-=======
         public string ConversieLaSir_PentruFisier()
         {
-            string obiectMedicamentPentruFisier = string.Format("{1}{0}{2}{0}{3}{0}",
+            string obiectMedicamentPentruFisier = string.Format("{1}{0}{2}{0}{3}{0}{4}{0}",
                 SEPARATOR_PRINCIPAL_FISIER,
                 (denumire ?? " NECUNOSCUT "),
-                (prospect ?? " NECUNOSCUT "));
+                (prospect ?? " NECUNOSCUT "),
+                (tip ?? " NECUNOSCUT "),
+                pret.ToString());
 
             return obiectMedicamentPentruFisier;
         }
->>>>>>> 8c236bedb45a23bae6f58b9f89e72028bbd053d3
     }
 }
