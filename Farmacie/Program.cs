@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,17 +11,54 @@ namespace Farmacie
     {
         static void Main()
         {
-            //	Instantierea unui obiect de tip FiguraGeom utilizand constructorul fara parametri
-            //	Tipul variabilei f este 'var' (determinat de compilator)
-            var f = new AddMedicament();
-            string s = f.Info();
-            Console.WriteLine(s);
 
             //	Instantierea unui obiect de tip FiguraGeom utilizand constructorul cu parametri
             //	Tipul variabilei f1 este explicit 'FiguraGeom'
-            AddMedicament f1 = new AddMedicament("Algocalmin", "Folosit pentru dureri");
+            AddMedicament f1 = new AddMedicament("Algocalmin", "Folosit pentru dureri","Pastile",456);
             string s1 = f1.Info();
             Console.WriteLine(s1);
+
+
+
+
+
+
+            //Citire de la tastatura
+            AddMedicament medicament = new AddMedicament();
+            Console.Write("Denumire: ");
+            string denumire = medicament.getDenumire();
+            denumire = Console.ReadLine();
+            string info = medicament.Info();
+            Console.WriteLine(info);
+
+            Console.WriteLine("Introduceti denumirea medicamentului:");
+            string denumire1 = Console.ReadLine();
+
+            Console.WriteLine("Introduceti prospectul medicamentului:");
+            string prospect = Console.ReadLine();
+
+            Console.WriteLine("Introduceti tipul medicamentului:");
+            string tip = Console.ReadLine();
+
+            Console.WriteLine("Introduceti pretul medicamentului:");
+            float.TryParse(Console.ReadLine(), out float pret);
+
+            AddMedicament f2 = new AddMedicament(denumire,prospect,tip,pret);
+
+            StreamWriter sw = new StreamWriter("medicament.txt", true);
+            sw.WriteLine(denumire);
+            sw.Close();
+
+            Console.WriteLine("Data saved to file.");
+            string s2 = f2.Info();
+           // Console.WriteLine(s2);
+
+
+
+
+
+
+
 
             Console.ReadKey();
         }

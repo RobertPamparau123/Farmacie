@@ -10,6 +10,9 @@ namespace Farmacie
     {
         string denumire;
         string prospect;
+        string tip;
+        float pret;
+
 
 
         //	Constructor fara parametri
@@ -17,20 +20,34 @@ namespace Farmacie
         {
             denumire = string.Empty;
             prospect = string.Empty;
+            tip = string.Empty;
+            pret = 145;
+
         }
 
         //	Constructor cu parametri
-        public AddMedicament(string _denumire, string _prospect)
+        public AddMedicament(string _denumire, string _prospect,string _tip,float _pret)
         {
             denumire = _denumire;
             prospect = _prospect;
+            tip = _tip;
+            pret = _pret;
         }
+
+        public string getDenumire() 
+        {
+            return denumire;
+        }
+
+
 
         //	Metoda care returneaza informatiile despre figura geometrica 
         //	sub forma unui sir de caractere
         public string Info()
         {
-            return $"Denumire: {denumire}, Prospect: {prospect}";
+            return $"Denumire: {denumire}, Prospect: {prospect}, Tip:{tip},Pret:{pret}";
         }
+
+        
     }
 }
