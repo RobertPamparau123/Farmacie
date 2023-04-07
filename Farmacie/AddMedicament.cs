@@ -51,7 +51,7 @@ namespace Farmacie
             denumire = dateFisier[DENUMIRE];
             prospect = dateFisier[PROSPECT];
             tip = dateFisier[TIP];
-            pret = float.Parse(dateFisier[PRET]);
+            //pret = ;
         }
 
         //	Metoda care returneaza informatiile despre figura geometrica 
