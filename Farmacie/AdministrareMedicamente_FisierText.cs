@@ -4,10 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Farmacie
 {
-    internal class AdministrareMedicamente_FisierText
+    public class AdministrareMedicamente_FisierText
     {
         private const int NR_MAX_MEDICAMENTE = 50;
         private string numeFisier;
@@ -51,5 +52,25 @@ namespace Farmacie
 
             return medicamente;
         }
+
+        public ArrayList GetMedicamente1()
+        {
+            ArrayList studenti = new ArrayList();
+            // instructiunea 'using' va apela streamReader.Close()
+            using (StreamReader streamReader = new StreamReader(numeFisier))
+            {
+                string linieFisier;
+
+                // citeste cate o linie si creaza un obiect de tip Student
+                // pe baza datelor din linia citita
+                while ((linieFisier = streamReader.ReadLine()) != null)
+                {
+                    AddMedicament student = new AddMedicament(linieFisier);
+                    studenti.Add(student);
+                }
+            }
+            return studenti;
+        }
     }
+               
 }
